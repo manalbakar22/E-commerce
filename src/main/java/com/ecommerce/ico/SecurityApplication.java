@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import static com.ecommerce.ico.user.Role.ADMIN;
 import static com.ecommerce.ico.user.Role.BUYER;
-// import static com.alibou.security.user.Role.MANAGER;
+
 
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
@@ -37,7 +37,7 @@ public class SecurityApplication {
 			var manager = RegisterRequest.builder()
 					.firstname("Admin")
 					.lastname("Admin")
-					.email("manager@mail.com")
+					.email("seller@mail.com")
 					.password("password")
 					.role(BUYER)
 					.build();

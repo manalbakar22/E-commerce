@@ -1,10 +1,7 @@
-package com.ecommerce.ico.book;
+package com.ecommerce.ico.asset;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.ecommerce.ico.user.User;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,13 +20,20 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Book {
+public class Asset {
 
     @Id
     @GeneratedValue
-    private Integer id;
-    private String author;
-    private String isbn;
+    private Integer asset_id;
+    private String title;
+    private String description;
+    private float price;
+    private String file_url;
+    private String asset_metadata;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Status status = Status.PENDING;
 
     @CreatedDate
     @Column(
@@ -53,4 +57,8 @@ public class Book {
     @LastModifiedBy
     @Column(insertable = false)
     private Integer lastModifiedBy;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User seller;
 }

@@ -1,4 +1,4 @@
-package com.ecommerce.ico.book;
+package com.ecommerce.ico.asset;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/books")
+@RequestMapping("/api/v1/assets")
 @RequiredArgsConstructor
-public class BookController {
+public class AssetController {
 
-    private final BookService service;
+    private final AssetService service;
 
     @PostMapping
     public ResponseEntity<?> save(
-            @RequestBody BookRequest request
+            @RequestBody AssetRequest request
     ) {
         service.save(request);
         return ResponseEntity.accepted().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<Book>> findAllBooks() {
+    public ResponseEntity<List<Asset>> findAllAssets() {
         return ResponseEntity.ok(service.findAll());
     }
 }

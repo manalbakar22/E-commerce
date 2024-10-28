@@ -1,13 +1,7 @@
 package com.ecommerce.ico.user;
 
 import com.ecommerce.ico.token.Token;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -38,6 +32,8 @@ public class User implements UserDetails {
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
+
+
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
