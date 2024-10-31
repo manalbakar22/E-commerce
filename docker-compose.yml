@@ -1,0 +1,36 @@
+services:
+  mysql:
+    container_name: mysql-db
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: your_password  # root password for MySQL
+      MYSQL_DATABASE: Ecommerce         # default database name
+      MYSQL_USER: root               # username for MySQL
+      MYSQL_PASSWORD: your_password           # password for the specified user
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"  # MySQL default port
+    networks:
+      - mysql_network
+    restart: unless-stopped
+
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql-db  # MySQL host name
+      PMA_PORT: 3306      # MySQL port
+      MYSQL_ROOT_PASSWORD: rootpassword  # root password for phpMyAdmin to access MySQL
+    ports:
+      - "8080:80"  # phpMyAdmin on port 8080
+    networks:
+      - mysql_network
+    restart: unless-stopped
+
+networks:
+  mysql_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
