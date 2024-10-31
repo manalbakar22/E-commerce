@@ -1,9 +1,9 @@
 #spring.application.name=E-comerc
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/ecommerce
+    url: jdbc:mysql://localhost:3306/ecommerce7
     username: root
-    password: psswrd
+    password: 
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
