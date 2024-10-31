@@ -1,5 +1,6 @@
 package com.ecommerce.ico.asset;
 
+import com.ecommerce.ico.ordre.Ordre;
 import com.ecommerce.ico.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -65,4 +67,10 @@ public class Asset {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AssetType assetType;
+    
+    
+    ////////////
+    @ManyToMany(mappedBy = "assets")
+    private List<Ordre> orders; // Liste des commandes incluant cet actif
+
 }

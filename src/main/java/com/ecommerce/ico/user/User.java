@@ -1,4 +1,5 @@
 package com.ecommerce.ico.user;
+import com.ecommerce.ico.ordre.Ordre;
 
 import com.ecommerce.ico.token.Token;
 import jakarta.persistence.*;
@@ -69,4 +70,8 @@ public class User implements UserDetails {
   public boolean isEnabled() {
     return true;
   }
+  ///////////////// Liste des commandes passées par l'utilisateur
+  
+  @OneToMany(mappedBy = "buyer")
+  private List<Ordre> orders; 
 }
