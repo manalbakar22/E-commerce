@@ -21,14 +21,14 @@ public class OrderService {
     private final AssetRepository assetRepository;
 
     public Ordre createOrder(Integer userId, List<Integer> assetIds) {
-        // Récupérer l'utilisateur (acheteur) par ID
+        
         User buyer = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // Récupérer les assets (produits) par leurs IDs
+        
         List<Asset> assets = assetRepository.findAllById(assetIds);
 
-        // Créer une nouvelle commande avec les informations récupérées
+        
         Ordre order = Ordre.builder()
                 .orderDate(LocalDateTime.now())
                 .buyer(buyer)

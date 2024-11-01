@@ -42,15 +42,14 @@ public class Ordre {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User buyer; // Représente l'utilisateur qui passe la commande
-
+    private User buyer; 
     @ManyToMany
     @JoinTable(
             name = "order_assets",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "asset_id")
     )
-    private List<Asset> assets; // Liste des actifs (produits numériques) commandés
+    private List<Asset> assets; 
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
