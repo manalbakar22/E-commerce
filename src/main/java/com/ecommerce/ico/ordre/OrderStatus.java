@@ -2,7 +2,7 @@ package com.ecommerce.ico.ordre;
 
 public enum OrderStatus {
 	
-	  PENDING,    
+	    PENDING,    
 	    COMPLETED,  
 	    CANCELED,   
 	    REFUNDED   
